@@ -4,16 +4,22 @@ import { create } from 'zustand'
 
 interface SelectNomineeStore {
   selected: Selected | null
-  onSelect: (categoryId: string, nomineeId: string) => void
+  onSelect: (
+    categoryId: string,
+    data: { id: string; title: string; category: string },
+  ) => void
 }
 
 export const useSelectNominee = create<SelectNomineeStore>((set) => ({
   selected: null,
-  onSelect: (categoryId: string, nomineeId: string) =>
+  onSelect: (
+    categoryId: string,
+    data: { id: string; title: string; category: string },
+  ) =>
     set((prev) => ({
       selected: {
         ...prev.selected,
-        [categoryId]: nomineeId,
+        [categoryId]: data,
       },
     })),
 }))

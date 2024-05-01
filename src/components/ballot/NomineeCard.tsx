@@ -11,16 +11,20 @@ import { cn } from '@/lib/utils'
 interface NomineeCardProps {
   id: string
   categoryId: string
+  category: string
   title: string
   photoUrl: string
-  onClick: (categoryId: string, nomineeId: string) => void
+  onClick: (
+    categoryId: string,
+    data: { id: string; title: string; category: string },
+  ) => void
   active?: boolean
 }
 
 export const NomineeCard: React.FC<NomineeCardProps> = (
   props: NomineeCardProps,
 ) => {
-  const { title, photoUrl, id, categoryId, active, onClick } = props
+  const { title, photoUrl, id, categoryId, active, onClick, category } = props
 
   return (
     <Card
@@ -44,7 +48,7 @@ export const NomineeCard: React.FC<NomineeCardProps> = (
         <Button
           className='w-full uppercase font-semibold'
           variant='primary'
-          onClick={() => onClick(categoryId, id)}
+          onClick={() => onClick(categoryId, { id, category, title })}
         >
           {active ? 'Selected' : 'Select'}
         </Button>

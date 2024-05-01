@@ -32,11 +32,15 @@ export const BallotList: React.FC<BallotListProps> = (
             <NomineeCard
               id={nominee.id}
               categoryId={categoryId}
+              category={categoryName}
               title={nominee.title}
               photoUrl={nominee.photoUrl}
               onClick={onSelect}
               active={
-                (selected && selected[categoryId] === nominee.id) || false
+                (selected &&
+                  selected[categoryId] &&
+                  selected[categoryId].id === nominee.id) ||
+                false
               }
             />
           </div>

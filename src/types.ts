@@ -11,5 +11,9 @@ export interface Category {
 }
 
 export interface Selected {
-  [key: string]: string
+  [key: string]: {
+    id: string
+    category: string
+    title: string
+  }
 }
